@@ -28,6 +28,9 @@ public class BookService {
         bookRepo.deleteById(id);
     }
 
+    public Book updateBook(Book book) {
+        return bookRepo.save(book);
 
+    }
 
 }

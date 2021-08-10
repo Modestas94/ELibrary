@@ -38,5 +38,11 @@ public class BookController {
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<Book> updateBook(@RequestBody Book book) {
+        Book updateBook = bookService.updateBook(book);
+        return new ResponseEntity<>(updateBook, HttpStatus.OK);
+    }
 }
 
