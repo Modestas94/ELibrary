@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping
 public class BookController {
@@ -15,16 +17,20 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-
+    @GetMapping("/all")
+    public ResponseEntity<List<Book>> getAllBooks() {
+        List<Book> books = bookService.findAllBooks();
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
     @PostMapping("/add")
     public ResponseEntity<Book> addBook(@RequestBody Book book) {
         Book addBook = bookService.addBook(book);
         return new ResponseEntity<>(addBook, HttpStatus.CREATED);
     }
 
-    @GetMapping("/find/{category}")
-    public ResponseEntity<Book> getBookByCategory(@PathVariable("category") Long category) {
-        Book books = bookService.findBookByCategory(category);
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable("id") Long id) {
+        Book books = bookService.findBookById(id);
         return new ResponseEntity<>(books, HttpStatus.OK);
 
     }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class BookService {
@@ -16,12 +18,17 @@ public class BookService {
     public BookService(BookRepo bookRepo) {
         this.bookRepo = bookRepo;
     }
+
+    public List<Book> findAllBooks() {
+        return bookRepo.findAll();
+    }
+
     public  Book addBook(Book book){
         return bookRepo.save(book);
     }
 
-    public  Book findBookByCategory(Long category){
-        return bookRepo.findBookByCategory(category);
+    public  Book findBookById(Long id){
+        return bookRepo.findBookById(id);
     }
 
     public void deleteBookById(Long id){
