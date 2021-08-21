@@ -26,13 +26,16 @@ public class BookService {
     public  Book addBook(Book book){
         return bookRepo.save(book);
     }
+    public List <Book> findBookByCategory(String category){
+        return bookRepo.findBooksByCategory(category);
+    }
 
     public  Book findBookById(Long id){
         return bookRepo.findBookById(id);
     }
 
     public void deleteBookById(Long id){
-        bookRepo.deleteById(id);
+        bookRepo.deleteBookById(id);
     }
 
     public Book updateBook(Book book) {
