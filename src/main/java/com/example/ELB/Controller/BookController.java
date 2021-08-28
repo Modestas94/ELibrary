@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping
@@ -41,7 +42,7 @@ public class BookController {
 
         }
 
-        @DeleteMapping("/delete/{id}")
+        @DeleteMapping("{id}")
         public ResponseEntity<Void> deleteBookById (@PathVariable("id") Long id){
             try {
                 bookService.deleteBookById(id);
