@@ -41,7 +41,6 @@ public class BookService {
 
     public Book updateBook(Book book) {
         return bookRepo.save(book);
-
     }
 
 }
